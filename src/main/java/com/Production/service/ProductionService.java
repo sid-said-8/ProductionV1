@@ -1,6 +1,7 @@
 package com.Production.service;
 
 import com.Production.entity.Production;
+import com.Production.exception.ResourceNotFoundException;
 import com.Production.repository.ProductionRepository;
 import org.springframework.stereotype.Service;
 
@@ -42,7 +43,7 @@ public class ProductionService {
     }
 
     public Production getProduction(long id) {
-            Optional<Production> proById = productionRepository.findById(id);
-            return proById.orElse(null);
+        Production production = productionRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Recoend not Found"));
+        return production;
     }
 }
