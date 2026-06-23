@@ -1,6 +1,7 @@
 package com.Production.controller;
 
 
+import com.Production.dto.ProductionDto;
 import com.Production.entity.Production;
 import com.Production.service.ProductionService;
 import org.springframework.http.HttpStatus;
@@ -20,14 +21,14 @@ public class ProductionController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Production>>getAllProductions(){
-        List<Production> allProductions = productionService.getAllProductions();
+    public ResponseEntity<List<ProductionDto>>getAllProductions(){
+        List<ProductionDto> allProductions = productionService.getAllProductions();
         return new ResponseEntity<>(allProductions, HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Production>createProductions(@RequestBody Production pro){
-        Production savedProduction = productionService.createProduction(pro);
+    public ResponseEntity<ProductionDto>createProductions(@RequestBody ProductionDto productionDto){
+        ProductionDto savedProduction = productionService.createProduction(productionDto);
         return new ResponseEntity<>(savedProduction,HttpStatus.CREATED);
     }
 
@@ -38,14 +39,14 @@ public class ProductionController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Production>updateProduction(@PathVariable long id,@RequestBody Production production){
-        Production upPro = productionService.updateProduction(id, production);
+    public ResponseEntity<ProductionDto>updateProduction(@PathVariable long id,@RequestBody ProductionDto productionDto){
+        ProductionDto upPro = productionService.updateProduction(id, productionDto);
         return new ResponseEntity<>(upPro,HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Production>getProduction(@PathVariable long id){
-        Production proById = productionService.getProduction(id);
+    public ResponseEntity<ProductionDto>getProduction(@PathVariable long id){
+        ProductionDto proById = productionService.getProduction(id);
         return new ResponseEntity<>(proById,HttpStatus.OK);
     }
 

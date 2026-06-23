@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.Production</groupId>
 	<artifactId>Production</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name/>
 	<description/>
 	<url/>
@@ -64,6 +64,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webmvc-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- Source: https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>3.1.0</version>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 

@@ -1,48 +1,71 @@
 package com.Production.service;
 
+import com.Production.dto.ProductionDto;
 import com.Production.entity.Production;
+import com.Production.exception.ResourceNotFoundException;
 import com.Production.repository.ProductionRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductionService {
 
     private ProductionRepository productionRepository;
 
-    public ProductionService(ProductionRepository productionRepository) {
+    private ModelMapper modelMapper;
+
+    public ProductionService(ProductionRepository productionRepository, ModelMapper modelMapper) {
         this.productionRepository = productionRepository;
+        this.modelMapper = modelMapper;
     }
 
-    public List<Production> getAllProductions() {
-        List<Production> allPros = productionRepository.findAll();
-        return allPros;
+    public List<ProductionDto> getAllProductions() {
+            return productionRepository.findAll()
+                    .stream()
+                    .map(this::mapToDto)
+                    .toList();
+//        List<Production> allPros = productionRepository.findAll();
+//        List<ProductionDto> proDto = allPros.stream().map(p->mapToDto(p)).collect(Collectors.toList());
+//        return proDto;
     }
 
-    public Production createProduction(Production pro) {
-        Production savedPros = productionRepository.save(pro);
-        return savedPros;
+    Production mapToEntity(ProductionDto productionDto){
+        Production production = modelMapper.map(productionDto, Production.class);
+        return production;
+    }
+
+    ProductionDto mapToDto(Production production){
+        ProductionDto productionDto = modelMapper.map(production, ProductionDto.class);
+        return  productionDto;
+    }
+
+    public ProductionDto createProduction(ProductionDto productionDto) {
+        Production production = mapToEntity(productionDto);
+        Production savedPros = productionRepository.save(production);
+        return mapToDto(savedPros);
     }
 
     public void deleteProduction(long id) {
         productionRepository.deleteById(id);
     }
 
-    public Production updateProduction(long id, Production production) {
+    public ProductionDto updateProduction(long id, ProductionDto productionDto) {
         Production pro = productionRepository.findById(id).get();
-        pro.setEmail(production.getEmail());
-        pro.setName(production.getName());
-        pro.setMobile(production.getMobile());
-        pro.setUsername(production.getUsername());
+        pro.setEmail(productionDto.getEmail());
+        pro.setName(productionDto.getName());
+        pro.setMobile(productionDto.getMobile());
+        pro.setUsername(productionDto.getUsername());
         Production updatedPro = productionRepository.save(pro);
-        return updatedPro;
+        return mapToDto(updatedPro);
 
     }
 
-    public Production getProduction(long id) {
-            Optional<Production> proById = productionRepository.findById(id);
-            return proById.orElse(null);
+    public ProductionDto getProduction(long id) {
+        Production production = productionRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Record not Found"));
+        return mapToDto(production);
     }
 }
