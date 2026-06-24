@@ -4,8 +4,10 @@ package com.Production.controller;
 import com.Production.dto.ProductionDto;
 import com.Production.entity.Production;
 import com.Production.service.ProductionService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,7 +29,10 @@ public class ProductionController {
     }
 
     @PostMapping
-    public ResponseEntity<ProductionDto>createProductions(@RequestBody ProductionDto productionDto){
+    public ResponseEntity<?>createProductions(@Valid @RequestBody ProductionDto productionDto, BindingResult result){
+        if(result.hasErrors()){              ///////////  v4  @valid
+            return new ResponseEntity<>(result.getFieldError().getDefaultMessage(),HttpStatus.BAD_REQUEST);
+        }
         ProductionDto savedProduction = productionService.createProduction(productionDto);
         return new ResponseEntity<>(savedProduction,HttpStatus.CREATED);
     }
