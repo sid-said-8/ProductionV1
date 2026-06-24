@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/production")
+@RequestMapping("/api/v1/production")
 public class ProductionController {
 
     private ProductionService productionService;
