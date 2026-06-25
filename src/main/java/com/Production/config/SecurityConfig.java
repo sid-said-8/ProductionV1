@@ -14,7 +14,9 @@ public class SecurityConfig {
         http.csrf(csrf->csrf.disable()).cors(cors->cors.disable());
 
         http.authorizeHttpRequests(auth->auth.requestMatchers
-                                ("/api/v1/production/user/allUser","/api/v1/production/user/signup")
+                                ("/api/v1/production/user/allUser",
+                                        "/api/v1/production/user/signup",
+                                        "/api/v1/production/user/login")
                         .permitAll().anyRequest().authenticated());
 
         return http.build();
