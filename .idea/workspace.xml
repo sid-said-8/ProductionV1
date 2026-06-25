@@ -7,7 +7,7 @@
     <list default="true" id="c995670e-16fd-46d6-b943-fb811f854be9" name="Changes" comment="v3-added-errordto">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Production/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Production/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Production/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Production/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="v5-signup-featureAdded" />
+        <entry key="$PROJECT_DIR$" value="v6-springSecurity-implemented-added-configuration" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -71,9 +71,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "Spring Boot.ProductionApplication.executor": "Run",
+    "Spring Boot.ProductionApplication.executor": "Debug",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "v6-springSecurity-implemented",
+    "git-widget-placeholder": "v7-encryptedPassword",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "F:/pros/Production",
     "project.structure.last.edited": "Modules",
@@ -161,5 +161,16 @@
     <MESSAGE value="v1" />
     <MESSAGE value="v3-added-errordto" />
     <option name="LAST_COMMIT_MESSAGE" value="v3-added-errordto" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/Production/service/UserService.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

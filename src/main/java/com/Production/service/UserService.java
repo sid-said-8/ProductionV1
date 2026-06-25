@@ -4,6 +4,7 @@ import com.Production.entity.Production;
 import com.Production.entity.User;
 import com.Production.repository.UserRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,6 +39,8 @@ public class UserService {
         user.setEmail(userDto.getEmail());
         user.setUsername(userDto.getUsername());
         user.setPassword(userDto.getPassword());
+        String encryptedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(5));
+        user.setPassword(encryptedPassword);
         User savedUser = userRepository.save(user);
 
         return "User Registered Succesfully";
